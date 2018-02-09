@@ -1,0 +1,53 @@
+---
+title: "Lab1 Question4"
+author: "Courtney Miller"
+date: "2/2/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("Lock5Data")
+library("mosaic")
+library("ggplot2")
+library("devtools")
+library("tidyverse")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Table of Contents: "Intro, Summary of Data, Data Analysis, Conclusion."
+
+## Intro
+The dataset *Hollywoood Movies* is from the Lock5Data package.  It provides data on movies from Hollywood that were released between the years of 2007 and 2013.  Some of the variables included are *Movie* -title of the movie, *RottenTomatoes* - the Rotten Tomatoes score, and *Genre* - the genre of the movie.  
+
+```{r}
+ movieDataset <- HollywoodMovies
+head(movieDataset)
+```
+![This image is from mensxp.com ](MoviePicture.jpg)
+
+
+## Summary of Data
+
+```{r echo=FALSE}
+(yearMade <- summary(HollywoodMovies$Year))
+(projectBudget <- summary(HollywoodMovies$Budget))
+(RTScore <- summary(HollywoodMovies$RottenTomatoes))
+yearMean <- mean(HollywoodMovies$Year)
+```
+The three variables that I thought would be the most useful are Year - the year the movies were made, Budget- the budget for the movie, RottenTomatoes- the Rotten Tomatoes score for the movie.  The summaries for these variables are being displayed in that order.  
+
+The average year for the HollywoodMovies dataset is `yearMean` .
+
+## Data Analysis
+
+```{r}
+xyplot(AudienceScore ~ RottenTomatoes, data = HollywoodMovies)
+xyplot(WorldGross ~ OpeningWeekend, data = HollywoodMovies)
+```
+
+
+## Conclusion
+In the first graph, the audience score is being compared to the Rotten Tomatoes score, to see if theres any type of correlation.  And it seems like there is a mild positive correlation between the audience score and the Rotten Tomatoes score.  
+
+The second graph compares world gross (the gross income for all viewers) and the opening weekend gross, both in millions of dollars.  and there appears to be a strong positive correlation between the two.
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

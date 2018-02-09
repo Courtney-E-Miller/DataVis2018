@@ -1,0 +1,25 @@
+---
+title: "Lab2Cereal"
+author: "Courtney Miller"
+date: "2/9/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(Lock5withR)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+cereal <- Cereal
+head(cereal)
+```
+
+This data set provides the nutritional facts, company and name for 30 breakfast cereals.
+
+```{r}
+plot(Calories ~ Sugars, data = cereal)
+summary(cereal$Sugars)
+summary(cereal$Calories)
+```
